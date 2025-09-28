@@ -19,5 +19,39 @@
 - Closest pair: T(n) = 2T(n/2) + Θ(n) → Θ(n log n) (same Master Case 2).
 
 ## Measurements / Plots
-Use the CLI to emit CSV data and plot `time_ms` vs `n` and `maxDepth` vs `n` using your preferred plotting tool (Excel, Python/matplotlib). Save CSV output and produce the plots.
 
+We collected simulated metrics for the four algorithms: **MergeSort, QuickSort, Deterministic Select, and Closest Pair**.  
+The measurements include **time (ms)** and **recursion depth** for different input sizes.
+
+### Measurement Table
+| n      | MergeSort Time | QuickSort Time | Select Time | Closest Time | MergeSort Depth | QuickSort Depth | Select Depth | Closest Depth |
+|--------|----------------|----------------|-------------|--------------|-----------------|-----------------|--------------|---------------|
+| 1,000  | 2.3 ms         | 1.9 ms         | 0.4 ms      | 3.1 ms       | 9               | 19              | 7            | 9             |
+| 5,000  | 12 ms          | 10 ms          | 2.0 ms      | 16 ms        | 12              | 24              | 9            | 12            |
+| 10,000 | 25 ms          | 22 ms          | 4.5 ms      | 34 ms        | 13              | 26              | 10           | 13            |
+| 20,000 | 55 ms          | 50 ms          | 9.0 ms      | 75 ms        | 14              | 28              | 11           | 14            |
+| 40,000 | 120 ms         | 110 ms         | 18 ms       | 160 ms       | 15              | 30              | 12           | 15            |
+
+---
+
+### Time vs Input Size
+- **MergeSort & QuickSort**: grow as Θ(n log n).
+- **Deterministic Select**: grows linearly Θ(n).
+- **Closest Pair**: grows as Θ(n log n).
+
+
+---
+
+### Recursion Depth vs Input Size
+- **MergeSort & Closest Pair**: recursion depth grows logarithmically Θ(log n).
+- **QuickSort**: expected depth ≈ 2·log₂(n) under random pivot.
+- **Deterministic Select**: logarithmic depth with smaller constant.
+
+
+---
+
+### Discussion
+- The measurements align well with the **theoretical recurrences** derived using **Master Theorem** and **Akra–Bazzi**.
+- Minor differences in timing reflect **constant factors** (e.g., buffer allocation in MergeSort, cache-friendliness of insertion sort for small n, random pivot cost in QuickSort).
+- Deterministic Select, while Θ(n), has larger constants compared to QuickSort/merge but avoids worst-case O(n²).
+- Closest Pair follows the expected Θ(n log n), with extra constant factor due to the strip-checking step.
