@@ -1,4 +1,4 @@
-DAA2/
+assignment1/
 ├── pom.xml
 ├── README.md
 ├── src
@@ -6,7 +6,7 @@ DAA2/
 │   │   └── java
 │   │       └── org.assignment
 │   │           ├── cli
-│   │           │   └── Main.javagit remote add origin https://github.com/mirasbek007/DAA2.git
+│   │           │   └── Main.java
 │   │           ├── metrics
 │   │           │   └── Metrics.java
 │   │           ├── util
